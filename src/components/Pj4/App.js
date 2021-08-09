@@ -1,6 +1,10 @@
 import React , { Fragment, Component } from 'react'
 import Header from './Header';
 import Dashboard from './Dashboard';
+import Login from './accounts/Login';
+import Register from './accounts/Register';
+
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import {Provider} from 'react-redux';
 import store from './store'; 
@@ -22,13 +26,19 @@ export class App extends Component {
             <Provider store={store}>
 
                 <AlertProvider template={AlertTemplate} {...alertOptions}>
-                    <Fragment>
-                        <Header />
-                        <Alerts />
-                        <div className="container">
-                            <Dashboard />
-                        </div>   
-                    </Fragment>
+                    <Router>
+                        <Fragment>
+                            <Header />
+                            <Alerts />
+                            <div className="container">
+                                <Switch>
+                                    <Route exact path="/" component={Dashboard} />    
+                                    <Route exact path="/register" component={Register} />    
+                                    <Route exact path="/login" component={Login} />    
+                                </Switch>
+                            </div>   
+                        </Fragment>
+                    </Router>
                 </AlertProvider>
             </Provider>
         )
