@@ -3,6 +3,7 @@ import Header from './Header';
 import Dashboard from './Dashboard';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
+import PrivateRoute from './common/PrivateRoute';
 
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import store from './store';
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import Alerts from './Alerts';
+import { loadUser } from './actions/auth';
 
 // Alert Options
 const alertOptions = { 
@@ -21,6 +23,11 @@ const alertOptions = {
 }
 
 export class App extends Component {
+
+    componentDidMount() {
+        store.dispatch(loadUser());
+    }
+
     render() {
         return (
             <Provider store={store}>
@@ -32,7 +39,7 @@ export class App extends Component {
                             <Alerts />
                             <div className="container">
                                 <Switch>
-                                    <Route exact path="/" component={Dashboard} />    
+                                    <PrivateRoute exact path="/" component={Dashboard} />    
                                     <Route exact path="/register" component={Register} />    
                                     <Route exact path="/login" component={Login} />    
                                 </Switch>
