@@ -9,6 +9,7 @@ const UpdateProduct = () => {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
+    const [imageChange, setImageChange] = useState(false);
 
     const history = useHistory();
     const { id } = useParams();
@@ -20,6 +21,11 @@ const UpdateProduct = () => {
         setPrice(data.price);
         setDescription(data.description);
         setCategory(data.category);
+    }
+
+    const ImageChange = (e) => {
+        setImage(e.target.files[0]);
+        setImageChange(true);
     }
 
     useEffect(() => {
@@ -34,10 +40,12 @@ const UpdateProduct = () => {
         formField.append('price', price)
         formField.append('description', description)
         formField.append('category', category)
-        if(image !== null){
+        
+        if(imageChange){
+            //console.log('hi')
             formField.append('image', image)
         }
-
+        
         await axios({
             method : 'PUT',
             url : `http://localhost:8000/api/${id}/`,
@@ -59,7 +67,7 @@ const UpdateProduct = () => {
                 <input type="file" 
                     className="form-control form-control-lg"
                     name="image"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={ImageChange}
                 />
             </div>
             <div className="form-group">

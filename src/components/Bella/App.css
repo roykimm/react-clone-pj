@@ -1,0 +1,85 @@
+
+.login {
+    min-height : 100vh;
+    width : 100%;
+    background-image: url('./images/bg-login.png');
+    background-size: cover;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+}
+
+.login-container {
+    flex : 1;
+}
+
+.login-header {
+    max-width : 400px;
+    padding : 0;
+    margin : 0 auto;
+    margin-bottom : 15px;
+    position : relative;
+    display : flex;
+    align-items: center;
+    justify-content : center;
+}
+
+.brand {
+    padding : 0;
+    font-size : 28px;
+    flex : 1;
+}
+
+.brand > small {
+    font-size : 13px;
+    display : block;
+    color : var(--custom-dark-grey);
+}
+
+.icon {
+    color : var(--custom-dark-grey);
+}
+
+.lock-icon {
+    font-size : 64px;
+}
+
+.login-body {
+    padding : 10px;
+    background-color : var(--custom-dark);
+}
+
+.login-content {
+    padding : 0;
+    color : var(--custom-dark);
+    max-width : 400px;
+    margin : 0 auto;
+}
+
+.login-content > .form-control {
+    border-color : transparent !important;
+    background : var(--custom-dark-grey);
+    color : white;
+}
+
+.form-floating {
+    margin-bottom : 10px;
+}
+
+.login-content > .form-control:focus {
+    box-shadow: 0 0 0 3px var(--custom-dark-grey);
+}
+
+.login-buttons {
+    margin-bottom : 10px;
+}
+
+.auth-link-container {
+    display: flex;
+    align-items: center;
+    justify-content : center;
+}
+
+.auth-link {
+    flex : 1;
+}
